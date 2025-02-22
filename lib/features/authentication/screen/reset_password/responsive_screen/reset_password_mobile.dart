@@ -1,6 +1,5 @@
-import 'package:t_store_admin_panel/features/authentication/screen/reset_password/widget/reset_password_widget.dart';
-
 import '../../../../../utils/constants/path_provider.dart';
+import '../widget/reset_password_widget.dart';
 
 class ResetPasswordMobile extends StatelessWidget {
   const ResetPasswordMobile({super.key});
