@@ -9,3 +9,4 @@ export '../../../../utils/constants/colors.dart';
 export '../../../../utils/constants/image_strings.dart';
 export '../../../../utils/constants/sizes.dart';
 export '../../../../utils/device/device_utility.dart';
+export '../../../../utils/helpers/network_manager.dart';

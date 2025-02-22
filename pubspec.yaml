@@ -49,6 +49,8 @@ dependencies:
   firebase_storage: ^12.4.2
   firebase_core: ^3.11.0
   firebase_auth: ^5.4.2
+  cloud_firestore: ^5.6.4
+
   dynamic_path_url_strategy: ^1.0.0
 
 dev_dependencies:

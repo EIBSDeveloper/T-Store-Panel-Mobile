@@ -1,5 +1,6 @@
 import 'package:dynamic_path_url_strategy/dynamic_path_url_strategy.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store_admin_panel/firebase_options.dart';
 
 import 'app.dart';
@@ -11,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize GetX Local Storage
-
+  GetStorage.init();
   // Remove # sign from url
   setPathUrlStrategy();
 

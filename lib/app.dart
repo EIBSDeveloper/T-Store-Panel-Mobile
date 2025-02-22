@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:t_store_admin_panel/bindings/general_binding.dart';
 import 'package:t_store_admin_panel/routes/app_routes.dart';
 import 'package:t_store_admin_panel/routes/routes.dart';
 
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: TTexts.appName,
+      initialBinding: GeneralBinding(),
       themeMode: ThemeMode.light,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
