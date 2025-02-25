@@ -6,13 +6,20 @@ import 'package:t_store_admin_panel/utils/popups/loaders.dart';
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
+  var isLoading = false.obs;
+  Rx<UserModel> user = UserModel.empty().obs;
+
   final userRepository = Get.put(UserRepository());
 
-  Future<UserModel> fechUserDetails() async {
+  Future<UserModel> fetchUserDetails() async {
     try {
-      final user = userRepository.fetchAdminDetails();
+      isLoading.value = true;
+      final user = await userRepository.fetchAdminDetails();
+      this.user.value = user;
+      isLoading.value = false;
       return user;
     } catch (e) {
+      isLoading.value = true;
       TLoaders.errorSnackBar(
           title: "Something went wrong!", message: e.toString());
 

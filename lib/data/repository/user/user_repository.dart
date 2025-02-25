@@ -38,11 +38,8 @@ class UserRepository extends GetxController {
           .collection("Users")
           .doc(AuthendicationRepository.instance.authUser!.uid)
           .get();
-      if (documentSnapshot.exists) {
-        return UserModel.fromSnapshot(documentSnapshot);
-      } else {
-        return UserModel.empty();
-      }
+
+      return UserModel.fromSnapshot(documentSnapshot);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

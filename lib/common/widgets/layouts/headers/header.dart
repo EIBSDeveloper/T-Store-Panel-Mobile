@@ -1,4 +1,6 @@
 import 'package:t_store_admin_panel/common/widgets/images/t_rounded_image.dart';
+import 'package:t_store_admin_panel/common/widgets/shimmers/shimmer.dart';
+import 'package:t_store_admin_panel/features/authentication/controller/user_controller.dart';
 import 'package:t_store_admin_panel/utils/constants/enums.dart';
 
 import '../../../../utils/constants/path_provider.dart';
@@ -10,6 +12,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Container(
       decoration: BoxDecoration(
           color: TColors.white,
@@ -39,25 +42,40 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
           SizedBox(width: TSizes.spaceBtwItems / 2),
           Row(
             children: [
-              TRoundedImage(
-                imageType: ImageType.asset,
-                image: TImages.user,
+              Obx(
+                () => TRoundedImage(
+                  width: 40,
+                  height: 40,
+                  padding: 2,
+                  imageType: controller.user.value.profilePicture.isNotEmpty
+                      ? ImageType.network
+                      : ImageType.asset,
+                  image: controller.user.value.profilePicture.isNotEmpty
+                      ? controller.user.value.profilePicture
+                      : TImages.user,
+                ),
               ),
               SizedBox(width: TSizes.sm),
               if (!TDeviceUtils.isMobileScreen(context))
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Karthick Dinesh",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    Text(
-                      "Karthickd602@gmail.com",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    )
-                  ],
+                Obx(
+                  () => Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      controller.isLoading.value
+                          ? TShimmerEffect(width: 50, height: 13)
+                          : Text(
+                              controller.user.value.fullname,
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                      controller.isLoading.value
+                          ? TShimmerEffect(width: 50, height: 13)
+                          : Text(
+                              controller.user.value.email,
+                              style: Theme.of(context).textTheme.labelMedium,
+                            )
+                    ],
+                  ),
                 )
             ],
           )

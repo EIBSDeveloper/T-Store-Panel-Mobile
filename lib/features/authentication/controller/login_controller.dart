@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:t_store_admin_panel/features/authentication/controller/user_controller.dart';
 import 'package:t_store_admin_panel/utils/constants/enums.dart';
 import 'package:t_store_admin_panel/utils/popups/full_screen_loader.dart';
 import 'package:t_store_admin_panel/utils/popups/loaders.dart';
@@ -18,6 +19,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final authRepo = AuthendicationRepository.instance;
 
   @override
   void onInit() {
@@ -49,8 +51,19 @@ class LoginController extends GetxController {
       Get.put(AuthendicationRepository());
 
       ///Register user in the firebase
-      final userCredential = await AuthendicationRepository.instance
-          .loginWithEmailAndPassword(email.text, password.text);
+      await authRepo.loginWithEmailAndPassword(email.text, password.text);
+
+      final user = await UserController.instance.fetchUserDetails();
+      TFullScreenLoader.stopLoading();
+      if (user.appRole != AppRole.admin) {
+        authRepo.logout();
+        TLoaders.errorSnackBar(
+            title: "Not Authorized",
+            message:
+                " You are not Authorized  or do have access, Contact Admin ");
+      } else {
+        authRepo.screenRedirect();
+      }
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
@@ -75,7 +88,8 @@ class LoginController extends GetxController {
 
       ///Register user in the firebase
       final userCredential = await AuthendicationRepository.instance
-          .registerWithEmailAndPassword(TTexts.adminEmail, TTexts.password);
+          .registerWithEmailAndPassword(
+              TTexts.adminEmail, TTexts.adminPassword);
 
       ///Save authendication data in firebase firestore
       final newUser = UserModel(
@@ -83,13 +97,15 @@ class LoginController extends GetxController {
           firstName: "Karthick",
           lastName: "Dinesh",
           phoneNumber: "+917094930770",
-          appRole: AppRole.admin,
+          appRole: AppRole.user,
           email: TTexts.adminEmail,
           password: TTexts.password,
           createdAt: DateTime.now());
 
       final userRepository = Get.put(UserRepository());
       await userRepository.createUser(newUser);
+      TLoaders.successSnackBar(
+          title: "Success", message: "Account created successfully");
 
       TFullScreenLoader.stopLoading();
     } catch (e) {
