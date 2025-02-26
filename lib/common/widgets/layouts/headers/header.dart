@@ -61,6 +61,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
                   () => Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       controller.isLoading.value
                           ? TShimmerEffect(width: 50, height: 13)
@@ -71,7 +72,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
                       controller.isLoading.value
                           ? TShimmerEffect(width: 50, height: 13)
                           : Text(
-                              controller.user.value.email,
+                              controller.user.value.email ?? '',
                               style: Theme.of(context).textTheme.labelMedium,
                             )
                     ],

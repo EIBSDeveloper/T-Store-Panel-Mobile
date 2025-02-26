@@ -29,7 +29,7 @@ class AuthendicationRepository extends GetxController {
     final user = _auth.currentUser;
 
     if (user != null) {
-      Get.offAllNamed(TRoutes.forgetPassword);
+      Get.offAllNamed(TRoutes.dashboard);
     } else {
       Get.offAllNamed(TRoutes.login);
     }

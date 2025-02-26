@@ -1,6 +1,7 @@
 import 'package:t_store_admin_panel/common/widgets/images/t_circular_image.dart';
 
 import '../../../../utils/constants/path_provider.dart';
+import 'menu/menu_item.dart';
 
 class TSideBar extends StatelessWidget {
   const TSideBar({super.key});
@@ -33,21 +34,11 @@ class TSideBar extends StatelessWidget {
                           .bodySmall!
                           .apply(letterSpacingDelta: 1.2),
                     ),
-                    // TMenuItem(
-                    //   route: TRoutes.firstScreen,
-                    //   icon: Iconsax.status,
-                    //   itemName: 'Dashboard',
-                    // ),
-                    // TMenuItem(
-                    //   route: TRoutes.secondScreen,
-                    //   icon: Iconsax.image,
-                    //   itemName: 'Media',
-                    // ),
-                    // TMenuItem(
-                    //   route: TRoutes.secondScreen,
-                    //   icon: Iconsax.picture_frame,
-                    //   itemName: 'Banners',
-                    // ),
+                    TMenuItem(
+                      route: TRoutes.dashboard,
+                      icon: Iconsax.status,
+                      itemName: 'Dashboard',
+                    ),
                   ],
                 ),
               )

@@ -1,4 +1,5 @@
 import 'package:t_store_admin_panel/common/widgets/layouts/headers/header.dart';
+import 'package:t_store_admin_panel/common/widgets/layouts/sidebars/sidebar.dart';
 
 import '../../../../utils/constants/path_provider.dart';
 
@@ -11,17 +12,18 @@ class DesktopLayout extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          Expanded(child: Drawer()),
+          Expanded(child: TSideBar()),
           Expanded(
+              flex: 5,
               child: Column(
-            children: [
-              /// --- Header
-              THeader(),
+                children: [
+                  /// --- Header
+                  THeader(),
 
-              ///--- Body
-              body ?? const SizedBox()
-            ],
-          ))
+                  ///--- Body
+                  Expanded(child: body ?? const SizedBox())
+                ],
+              ))
         ],
       ),
     );

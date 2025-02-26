@@ -1,3 +1,5 @@
+import 'package:t_store_admin_panel/common/widgets/layouts/sidebars/sidebar.dart';
+
 import '../../../../utils/constants/path_provider.dart';
 import '../../layouts/headers/header.dart';
 
@@ -13,7 +15,7 @@ class TabletLayout extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: THeader(scaffoldKey: scaffoldKey),
-      drawer: Drawer(),
+      drawer: TSideBar(),
       body: body ?? SizedBox(),
     );
   }
