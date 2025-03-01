@@ -1,4 +1,5 @@
 import '../../../../../utils/constants/path_provider.dart';
+import '../widget/dashboard_card.dart';
 
 class DashboardTabletScreen extends StatelessWidget {
   const DashboardTabletScreen({super.key});
@@ -6,7 +7,50 @@ class DashboardTabletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Tablet")),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(TSizes.defaultSpace),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// -- Header
+              Text("Dashboard",
+                  style: Theme.of(context).textTheme.headlineLarge),
+              SizedBox(height: TSizes.spaceBtwSections),
+
+              /// -- Card
+              Row(
+                children: [
+                  Expanded(
+                    child: TDashboardCard(
+                        title: 'Sales Total', stats: 25, subTitle: '₹3655.6'),
+                  ),
+                  SizedBox(width: TSizes.spaceBtwItems),
+                  Expanded(
+                    child: TDashboardCard(
+                        title: 'Average Order Value',
+                        stats: 15,
+                        subTitle: '2051.6'),
+                  ),
+                ],
+              ),
+              SizedBox(height: TSizes.spaceBtwItems),
+              Row(
+                children: [
+                  Expanded(
+                    child: TDashboardCard(
+                        title: 'Total Orders', stats: 44, subTitle: '36'),
+                  ),
+                  SizedBox(width: TSizes.spaceBtwItems),
+                  Expanded(
+                      child: TDashboardCard(
+                          title: 'Visitors', stats: 2, subTitle: '6501')),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
