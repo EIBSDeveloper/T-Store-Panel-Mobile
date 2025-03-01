@@ -29,6 +29,7 @@ dependencies:
   firebase_auth: ^5.4.2
   cloud_firestore: ^5.6.4
   dynamic_path_url_strategy: ^1.0.0
+  fl_chart: ^0.69.2
 
 dev_dependencies:
   flutter_test:

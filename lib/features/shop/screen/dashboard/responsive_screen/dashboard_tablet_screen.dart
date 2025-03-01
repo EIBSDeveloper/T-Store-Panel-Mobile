@@ -1,5 +1,8 @@
+import '../../../../../common/widgets/containers/rounded_container.dart';
 import '../../../../../utils/constants/path_provider.dart';
 import '../widget/dashboard_card.dart';
+import '../widget/order_status_pie_graph.dart';
+import '../widget/weekly_sales_chart.dart';
 
 class DashboardTabletScreen extends StatelessWidget {
   const DashboardTabletScreen({super.key});
@@ -47,6 +50,17 @@ class DashboardTabletScreen extends StatelessWidget {
                           title: 'Visitors', stats: 2, subTitle: '6501')),
                 ],
               ),
+              SizedBox(height: TSizes.spaceBtwSections),
+
+              /// -- Graph
+              TWeeklySalesGraph(),
+              SizedBox(height: TSizes.spaceBtwSections),
+
+              /// --- Orders
+              TRoundedContainer(),
+
+              /// -- Pie Chart
+              OrderStatusPieGraph(),
             ],
           ),
         ),

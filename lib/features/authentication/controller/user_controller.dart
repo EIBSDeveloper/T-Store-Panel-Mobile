@@ -19,7 +19,7 @@ class UserController extends GetxController {
       isLoading.value = false;
       return user;
     } catch (e) {
-      isLoading.value = true;
+      isLoading.value = false;
       TLoaders.errorSnackBar(
           title: "Something went wrong!", message: e.toString());
 

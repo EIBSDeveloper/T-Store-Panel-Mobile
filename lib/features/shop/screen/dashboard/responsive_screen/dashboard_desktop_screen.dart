@@ -1,5 +1,9 @@
+import 'package:t_store_admin_panel/common/widgets/containers/rounded_container.dart';
+
 import '../../../../../utils/constants/path_provider.dart';
 import '../widget/dashboard_card.dart';
+import '../widget/order_status_pie_graph.dart';
+import '../widget/weekly_sales_chart.dart';
 
 class DashboardDesktopScreen extends StatelessWidget {
   const DashboardDesktopScreen({super.key});
@@ -41,6 +45,31 @@ class DashboardDesktopScreen extends StatelessWidget {
                   Expanded(
                       child: TDashboardCard(
                           title: 'Visitors', stats: 2, subTitle: '6501')),
+                ],
+              ),
+              SizedBox(height: TSizes.spaceBtwSections),
+
+              /// -- Graph
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        /// -- Bar Graph
+                        TWeeklySalesGraph(),
+                        SizedBox(height: TSizes.spaceBtwSections),
+
+                        /// --- Orders
+                        TRoundedContainer(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: TSizes.spaceBtwSections),
+
+                  /// -- Pie Chart
+                  Expanded(child: OrderStatusPieGraph())
                 ],
               )
             ],
