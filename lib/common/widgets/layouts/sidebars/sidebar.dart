@@ -39,6 +39,11 @@ class TSideBar extends StatelessWidget {
                       icon: Iconsax.status,
                       itemName: 'Dashboard',
                     ),
+                    TMenuItem(
+                      route: TRoutes.media,
+                      icon: Iconsax.image,
+                      itemName: 'Media',
+                    ),
                   ],
                 ),
               )

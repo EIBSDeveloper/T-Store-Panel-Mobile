@@ -3,6 +3,7 @@ class TRoutes {
   static const forgetPassword = '/forget-Password';
   static const resetPassword = '/reset-Password';
   static const dashboard = '/dashboard';
+  static const media = '/media';
 
-  static List sideMenu = [];
+  static List sidebarMenuItems = [dashboard];
 }

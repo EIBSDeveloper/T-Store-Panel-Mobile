@@ -51,9 +51,9 @@ class TPaginatedDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
       // Set the dynamic height of the PaginatedDataTable
-      // height: tableHeight,
+      height: tableHeight,
       child: Theme(
         // Use to set the Backend color
         data: Theme.of(context).copyWith(

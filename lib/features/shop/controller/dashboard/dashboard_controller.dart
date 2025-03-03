@@ -1,5 +1,4 @@
 import 'package:t_store_admin_panel/utils/constants/enums.dart';
-import 'package:t_store_admin_panel/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/path_provider.dart';
 import '../../model/order_model.dart';
@@ -44,6 +43,84 @@ class DashboardController extends GetxController {
       status: OrderStatus.delivered,
       totalAmount: 115,
       orderDate: DateTime(2025, 3, 2),
+      deliveryDate: DateTime(2024, 5, 24),
+    ),
+    OrderModel(
+        id: 'CWT0112',
+        status: OrderStatus.processing,
+        totalAmount: 265,
+        orderDate: DateTime(2025, 3, 3),
+        deliveryDate: DateTime(2024, 3, 20)),
+    OrderModel(
+        id: 'CWT0012',
+        status: OrderStatus.processing,
+        totalAmount: 265,
+        orderDate: DateTime(2025, 2, 26),
+        deliveryDate: DateTime(2024, 5, 20)), // OrderModel
+    OrderModel(
+      id: 'CWT0025',
+      status: OrderStatus.shipped,
+      totalAmount: 369,
+      orderDate: DateTime(2025, 2, 24),
+      deliveryDate: DateTime(2024, 5, 21),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT0152',
+      status: OrderStatus.delivered,
+      totalAmount: 254,
+      orderDate: DateTime(2025, 2, 25),
+      deliveryDate: DateTime(2024, 15, 22),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT0265',
+      status: OrderStatus.delivered,
+      totalAmount: 345,
+      orderDate: DateTime(2025, 2, 28),
+      deliveryDate: DateTime(2025, 2, 28),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT1536',
+      status: OrderStatus.delivered,
+      totalAmount: 115,
+      orderDate: DateTime(2025, 3, 2),
+      deliveryDate: DateTime(2024, 5, 24),
+    ),
+    OrderModel(
+        id: 'CWT0112',
+        status: OrderStatus.processing,
+        totalAmount: 265,
+        orderDate: DateTime(2025, 3, 3),
+        deliveryDate: DateTime(2024, 3, 20)),
+    OrderModel(
+      id: 'CWT0025',
+      status: OrderStatus.shipped,
+      totalAmount: 369,
+      orderDate: DateTime(2025, 3, 4),
+      deliveryDate: DateTime(2024, 3, 21),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT0152',
+      status: OrderStatus.delivered,
+      totalAmount: 254,
+      orderDate: DateTime(
+        2025,
+        3,
+        5,
+      ),
+      deliveryDate: DateTime(2024, 3, 22),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT0265',
+      status: OrderStatus.delivered,
+      totalAmount: 345,
+      orderDate: DateTime(2025, 3, 6),
+      deliveryDate: DateTime(2025, 2, 28),
+    ), // OrderModel
+    OrderModel(
+      id: 'CWT1536',
+      status: OrderStatus.delivered,
+      totalAmount: 115,
+      orderDate: DateTime(2025, 3, 4),
       deliveryDate: DateTime(2024, 5, 24),
     ), // OrderModel
   ];

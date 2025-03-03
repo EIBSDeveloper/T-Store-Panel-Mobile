@@ -1,5 +1,5 @@
-import '../../../../../common/widgets/containers/rounded_container.dart';
 import '../../../../../utils/constants/path_provider.dart';
+import '../table/data_table.dart';
 import '../widget/dashboard_card.dart';
 import '../widget/order_status_pie_graph.dart';
 import '../widget/weekly_sales_chart.dart';
@@ -57,7 +57,17 @@ class DashboardTabletScreen extends StatelessWidget {
               SizedBox(height: TSizes.spaceBtwSections),
 
               /// --- Orders
-              TRoundedContainer(),
+              TRoundedContainer(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Recent Orders",
+                        style: Theme.of(context).textTheme.headlineSmall),
+                    SizedBox(height: TSizes.spaceBtwSections),
+                    DashboardOrderTable()
+                  ],
+                ),
+              ),
 
               /// -- Pie Chart
               OrderStatusPieGraph(),

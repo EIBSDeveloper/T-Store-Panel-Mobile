@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../../../../common/widgets/containers/rounded_container.dart';
 import '../../../../../utils/constants/path_provider.dart';
 import '../../../controller/dashboard/dashboard_controller.dart';
 
@@ -12,6 +11,7 @@ class TWeeklySalesGraph extends StatelessWidget {
     final controller = Get.put(DashboardController());
     return TRoundedContainer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Weekly Sales",
               style: Theme.of(context).textTheme.headlineSmall),

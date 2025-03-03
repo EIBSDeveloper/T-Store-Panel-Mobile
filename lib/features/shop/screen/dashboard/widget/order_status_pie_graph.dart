@@ -1,8 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:t_store_admin_panel/common/widgets/containers/circular_container.dart';
-import 'package:t_store_admin_panel/common/widgets/containers/rounded_container.dart';
 import 'package:t_store_admin_panel/features/shop/controller/dashboard/dashboard_controller.dart';
-import 'package:t_store_admin_panel/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/enums.dart';
 import '../../../../../utils/constants/path_provider.dart';
@@ -15,6 +13,7 @@ class OrderStatusPieGraph extends StatelessWidget {
     final controller = DashboardController.instance;
     return TRoundedContainer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Order Status",
               style: Theme.of(context).textTheme.headlineSmall),
