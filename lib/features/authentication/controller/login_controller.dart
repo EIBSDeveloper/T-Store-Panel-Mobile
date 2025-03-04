@@ -99,9 +99,9 @@ class LoginController extends GetxController {
           firstName: "Karthick",
           lastName: "Dinesh",
           phoneNumber: "+917094930770",
-          appRole: AppRole.user,
+          appRole: AppRole.admin,
           email: TTexts.adminEmail,
-          password: TTexts.password,
+          password: TTexts.adminPassword,
           createdAt: DateTime.now());
 
       final userRepository = Get.put(UserRepository());

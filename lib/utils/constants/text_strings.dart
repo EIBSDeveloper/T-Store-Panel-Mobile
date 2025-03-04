@@ -1,7 +1,7 @@
 /// This class contains all the App Text in String formats.
 class TTexts {
   // -- Admin Default Credentials
-  static const String adminEmail = "karthickd603@gmail.com";
+  static const String adminEmail = "karthickd602@gmail.com";
   static const String adminPassword = "Karthick@1";
 
   // -- Storage Paths
