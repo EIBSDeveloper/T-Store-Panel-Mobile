@@ -41,46 +41,54 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBqP03DnkZCnp09NArb-e7rAPxZ6dZLauk',
-    appId: '1:6186204465:web:5fefb8affb490993880410',
-    messagingSenderId: '6186204465',
-    projectId: 't-store-31622',
-    authDomain: 't-store-31622.firebaseapp.com',
-    storageBucket: 't-store-31622.firebasestorage.app',
+    apiKey: 'AIzaSyCYhpibvXqOU6z0zQhMycn8J1TIOO3zd2k',
+    appId: '1:15877949110:web:e41b5cd7ee0ecb68f58817',
+    messagingSenderId: '15877949110',
+    projectId: 'new-church-77e88',
+    authDomain: 'new-church-77e88.firebaseapp.com',
+    databaseURL: 'https://new-church-77e88-default-rtdb.firebaseio.com',
+    storageBucket: 'new-church-77e88.appspot.com',
+    measurementId: 'G-7EZ27WD2ET',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDs0zDGUIzXmHCR8oKzC2OiILl-nWOfy0g',
-    appId: '1:6186204465:android:18acf553a076533e880410',
-    messagingSenderId: '6186204465',
-    projectId: 't-store-31622',
-    storageBucket: 't-store-31622.firebasestorage.app',
+    apiKey: 'AIzaSyDMOpSfITvD3A4sw29nInvlx5tmTq7kYa8',
+    appId: '1:15877949110:android:52d9fe4fa324257cf58817',
+    messagingSenderId: '15877949110',
+    projectId: 'new-church-77e88',
+    databaseURL: 'https://new-church-77e88-default-rtdb.firebaseio.com',
+    storageBucket: 'new-church-77e88.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAy0goHvSDIjpEAKcpmjLnKF6UiRqCPxSY',
-    appId: '1:6186204465:ios:1dd1790d7fdc7417880410',
-    messagingSenderId: '6186204465',
-    projectId: 't-store-31622',
-    storageBucket: 't-store-31622.firebasestorage.app',
+    apiKey: 'AIzaSyB3iTmP1o9c-84g86fPF1j4LQifcUZ7LjU',
+    appId: '1:15877949110:ios:a61affaa838282d7f58817',
+    messagingSenderId: '15877949110',
+    projectId: 'new-church-77e88',
+    databaseURL: 'https://new-church-77e88-default-rtdb.firebaseio.com',
+    storageBucket: 'new-church-77e88.appspot.com',
     iosBundleId: 'com.example.tStoreAdminPanel',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAy0goHvSDIjpEAKcpmjLnKF6UiRqCPxSY',
-    appId: '1:6186204465:ios:1dd1790d7fdc7417880410',
-    messagingSenderId: '6186204465',
-    projectId: 't-store-31622',
-    storageBucket: 't-store-31622.firebasestorage.app',
+    apiKey: 'AIzaSyB3iTmP1o9c-84g86fPF1j4LQifcUZ7LjU',
+    appId: '1:15877949110:ios:a61affaa838282d7f58817',
+    messagingSenderId: '15877949110',
+    projectId: 'new-church-77e88',
+    databaseURL: 'https://new-church-77e88-default-rtdb.firebaseio.com',
+    storageBucket: 'new-church-77e88.appspot.com',
     iosBundleId: 'com.example.tStoreAdminPanel',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBqP03DnkZCnp09NArb-e7rAPxZ6dZLauk',
-    appId: '1:6186204465:web:4a350c2cb85cc3a5880410',
-    messagingSenderId: '6186204465',
-    projectId: 't-store-31622',
-    authDomain: 't-store-31622.firebaseapp.com',
-    storageBucket: 't-store-31622.firebasestorage.app',
+    apiKey: 'AIzaSyCYhpibvXqOU6z0zQhMycn8J1TIOO3zd2k',
+    appId: '1:15877949110:web:e41b5cd7ee0ecb68f58817',
+    messagingSenderId: '15877949110',
+    projectId: 'new-church-77e88',
+    authDomain: 'new-church-77e88.firebaseapp.com',
+    databaseURL: 'https://new-church-77e88-default-rtdb.firebaseio.com',
+    storageBucket: 'new-church-77e88.appspot.com',
+    measurementId: 'G-7EZ27WD2ET',
   );
+
 }

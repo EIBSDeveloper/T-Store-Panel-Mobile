@@ -1,7 +1,7 @@
 import '../../../../utils/constants/path_provider.dart';
 
 class SidebarController extends GetxController {
-  final activeItem = TRoutes.login.obs;
+  final activeItem = TRoutes.dashboard.obs;
   final hoverItem = ''.obs;
 
   void changeActiveItem(String route) => activeItem.value = route;

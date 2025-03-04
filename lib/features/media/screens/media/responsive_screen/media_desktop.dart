@@ -1,3 +1,4 @@
+import '../../../../../common/widgets/breadcrumbs/breadcrumb_with_headings.dart';
 import '../../../../../utils/constants/path_provider.dart';
 
 class MediaDesktopScreen extends StatelessWidget {
@@ -16,7 +17,16 @@ class MediaDesktopScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [],
+                children: [
+                  TBreadcrumbWithHeadings(
+                    headings: 'Media',
+                    breadcrumbItems: [
+                      TRoutes.login,
+                      TRoutes.resetPassword,
+                      TRoutes.forgetPassword
+                    ],
+                  )
+                ],
               ),
               SizedBox(height: TSizes.spaceBtwSections),
             ],
