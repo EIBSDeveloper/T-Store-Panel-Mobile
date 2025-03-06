@@ -77,7 +77,6 @@ class TBreadcrumbWithHeadings extends StatelessWidget {
   }
 
   String capitalize(String s) {
-    print("55555555555555555555 -$s- ${s[0].toUpperCase() + s.substring(1)}-");
     return s.isEmpty ? '' : s[0].toUpperCase() + s.substring(1);
   }
 }

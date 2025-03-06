@@ -12,6 +12,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final networkController = Get.put(NetworkManager());
     final controller = UserController.instance;
     return Container(
       decoration: BoxDecoration(

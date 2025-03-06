@@ -85,6 +85,7 @@ class TRoundedImage extends StatelessWidget {
   // Function to build the network image widget
   Widget _buildNetworkImage() {
     if (image != null) {
+      print("Image URL : $image");
       // Use CachedNetworkImage for efficient loading and caching of network images // Not working in Web but just for loading
       return CachedNetworkImage(
         fit: fit,
