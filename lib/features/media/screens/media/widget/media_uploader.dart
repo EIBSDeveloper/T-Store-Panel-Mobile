@@ -1,14 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:flutter_dropzone/flutter_dropzone.dart';
-import 'package:t_store_admin_panel/common/widgets/images/t_rounded_image.dart';
 import 'package:t_store_admin_panel/features/media/controllers/media_controller.dart';
 import 'package:t_store_admin_panel/features/media/screens/media/widget/folder_dropdown.dart';
 import 'package:t_store_admin_panel/utils/constants/enums.dart';
+import 'package:universal_html/html.dart' as html;
 
+import '../../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../../utils/constants/path_provider.dart';
+import '../../../model/image_model.dart';
 
 class MediaUploader extends StatelessWidget {
   const MediaUploader({super.key});
-
   @override
   Widget build(BuildContext context) {
     final controller = MediaController.instance;
@@ -38,12 +41,33 @@ class MediaUploader extends StatelessWidget {
                             onHover: () => print('on Hover'),
                             onLeave: () => print('on Leave'),
                             onCreated: (ctrl) =>
-                                controller.dropzoneViewController = ctrl,
-                            onDrop: (file) => print("on drop ${file.name}"),
+                                controller.dropzoneController = ctrl,
                             onDropInvalid: (ev) =>
                                 print('Zone Invalid MIME $ev'),
                             onDropMultiple: (ev) async {
                               print('Zone drop Multiple: $ev');
+                            },
+                            onDropFile: (file) async {
+                              if (file is html.File) {
+                                final bytes = await controller
+                                    .dropzoneController
+                                    .getFileData(file);
+
+                                final image = ImageModel(
+                                    url: '',
+                                    folder: '',
+                                    filename: file.name,
+                                    file: file,
+                                    localImageToDisplay:
+                                        Uint8List.fromList(bytes));
+
+                                controller.selectedImageToUpload.add(image);
+                              } else if (file is String) {
+                                print("Zone Drop ${file}");
+                              } else {
+                                print(
+                                    'Zone Unknown Type :${file.runtimeType} ');
+                              }
                             },
                           ),
                           Column(
@@ -55,7 +79,8 @@ class MediaUploader extends StatelessWidget {
                               Text("Drag and Drop Image here"),
                               SizedBox(height: TSizes.spaceBtwItems),
                               OutlinedButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      controller.selectLocalImages(),
                                   child: Text('Select Image')),
                             ],
                           )
@@ -67,6 +92,8 @@ class MediaUploader extends StatelessWidget {
                 SizedBox(height: TSizes.spaceBtwItems),
 
                 /// locally selected Image
+
+                // if (controller.selectedImageToUpload.isNotEmpty)
                 TRoundedContainer(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,84 +136,21 @@ class MediaUploader extends StatelessWidget {
                       ),
                       SizedBox(height: TSizes.spaceBtwSections),
                       Wrap(
-                        alignment: WrapAlignment.start,
-                        spacing: TSizes.spaceBtwItems / 2,
-                        runSpacing: TSizes.spaceBtwItems / 2,
-                        children: [
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                          TRoundedImage(
-                            padding: TSizes.sm,
-                            imageType: ImageType.asset,
-                            image: TImages.darkAppLogo,
-                            width: 90,
-                            height: 90,
-                            backgroundColor: TColors.primaryBackground,
-                          ),
-                        ],
-                      ),
+                          alignment: WrapAlignment.start,
+                          spacing: TSizes.spaceBtwItems / 2,
+                          runSpacing: TSizes.spaceBtwItems / 2,
+                          children: controller.selectedImageToUpload
+                              .where(
+                                  (image) => image.localImageToDisplay != null)
+                              .map((element) => TRoundedImage(
+                                    padding: TSizes.sm,
+                                    imageType: ImageType.asset,
+                                    memoryImage: element.localImageToDisplay,
+                                    width: 90,
+                                    height: 90,
+                                    backgroundColor: TColors.primaryBackground,
+                                  ))
+                              .toList()),
                       SizedBox(height: TSizes.spaceBtwSections),
                       TDeviceUtils.isMobileScreen(context)
                           ? SizedBox(
