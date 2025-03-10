@@ -46,7 +46,10 @@ class MediaDesktopScreen extends StatelessWidget {
               MediaUploader(),
 
               /// Media Content
-              MediaContent(),
+              MediaContent(
+                allowSelection: true,
+                allowMultipleSelection: true,
+              ),
             ],
           ),
         ),

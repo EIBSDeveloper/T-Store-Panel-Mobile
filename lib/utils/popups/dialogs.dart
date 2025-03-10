@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:t_store_admin_panel/utils/constants/colors.dart';
 
 class TDialogs {
   static defaultDialog({
     required BuildContext context,
     String title = 'Removal Confirmation',
-    String content = 'Removing this data will delete all related data. Are you sure?',
+    String content =
+        'Removing this data will delete all related data. Are you sure?',
     String cancelText = 'Cancel',
     String confirmText = 'Remove',
+    Color confirmTextBackgroundColor = TColors.error,
     Function()? onCancel,
     Function()? onConfirm,
   }) {
@@ -23,6 +26,9 @@ class TDialogs {
               child: Text(cancelText),
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: confirmTextBackgroundColor,
+                  foregroundColor: Colors.white),
               onPressed: onConfirm,
               child: Text(confirmText),
             ),
