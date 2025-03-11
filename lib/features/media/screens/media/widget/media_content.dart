@@ -25,6 +25,7 @@ class MediaContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool loadedPreviousSelection = false;
     final controller = MediaController.instance;
     return TRoundedContainer(
       child: Column(
@@ -32,6 +33,7 @@ class MediaContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
@@ -53,7 +55,26 @@ class MediaContent extends StatelessWidget {
           Obx(
             () {
               List<ImageModel> images = _getSelectedFolderImages(controller);
-
+              if (!loadedPreviousSelection) {
+                if (alreadySelectedUrls != null &&
+                    alreadySelectedUrls!.isNotEmpty) {
+                  /// Convert alreadySelectedUrl to a set for faster lookup
+                  final selectedUrlSets =
+                      Set<String>.from(alreadySelectedUrls!);
+                  for (var image in images) {
+                    image.isSelected.value =
+                        selectedUrlSets.contains(image.url);
+                    if (image.isSelected.value) {
+                      selectedImages.add(image);
+                    }
+                  }
+                } else {
+                  for (var image in images) {
+                    image.isSelected.value = false;
+                  }
+                }
+                loadedPreviousSelection = true;
+              }
               if (controller.isLoading.value && images.isEmpty) {
                 return const TLoaderAnimation();
               }
@@ -76,7 +97,7 @@ class MediaContent extends StatelessWidget {
                               ),
                               child: SizedBox(
                                 width: 140,
-                                height: 180,
+                                height: 140,
                                 child: Column(
                                   children: [
                                     allowSelection
@@ -169,8 +190,8 @@ class MediaContent extends StatelessWidget {
 
   Widget _buildSimpleList(ImageModel image) {
     return TRoundedImage(
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         padding: TSizes.sm,
         imageType: ImageType.network,
         image: image.url,
@@ -182,8 +203,8 @@ class MediaContent extends StatelessWidget {
     return Stack(
       children: [
         TRoundedImage(
-            width: 140,
-            height: 140,
+            width: 120,
+            height: 120,
             padding: TSizes.sm,
             imageType: ImageType.network,
             image: image.url,

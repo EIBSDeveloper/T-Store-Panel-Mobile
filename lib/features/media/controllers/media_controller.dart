@@ -3,6 +3,8 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:t_store_admin_panel/common/widgets/loaders/circular_loader.dart';
 import 'package:t_store_admin_panel/data/repository/media/media_repository.dart';
 import 'package:t_store_admin_panel/features/media/model/image_model.dart';
+import 'package:t_store_admin_panel/features/media/screens/media/widget/media_content.dart';
+import 'package:t_store_admin_panel/features/media/screens/media/widget/media_uploader.dart';
 import 'package:t_store_admin_panel/utils/constants/enums.dart';
 import 'package:t_store_admin_panel/utils/popups/dialogs.dart';
 import 'package:t_store_admin_panel/utils/popups/full_screen_loader.dart';
@@ -313,8 +315,31 @@ class MediaController extends GetxController {
 
   ///-- Image selected from bottom sheet
 
-  Future<List<ImageModel>?> selectedImageFromMedia(
+  Future<List<ImageModel>?> selectedImagesFromMedia(
       {List<String>? selectedUrls,
       bool allowSelection = true,
-      bool multipleSelection = false}) async {}
+      bool multipleSelection = false}) async {
+    showImageUploaderSection.value = true;
+
+    List<ImageModel>? selectedImages = await Get.bottomSheet<List<ImageModel>>(
+        isScrollControlled: true,
+        backgroundColor: TColors.primaryBackground,
+        FractionallySizedBox(
+          heightFactor: 1,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: Column(
+                children: [
+                  MediaUploader(),
+                  MediaContent(
+                      allowSelection: allowSelection,
+                      alreadySelectedUrls: selectedUrls ?? [],
+                      allowMultipleSelection: multipleSelection)
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
 }

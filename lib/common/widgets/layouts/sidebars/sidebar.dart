@@ -35,15 +35,17 @@ class TSideBar extends StatelessWidget {
                           .apply(letterSpacingDelta: 1.2),
                     ),
                     TMenuItem(
-                      route: TRoutes.dashboard,
-                      icon: Iconsax.status,
-                      itemName: 'Dashboard',
-                    ),
+                        route: TRoutes.dashboard,
+                        icon: Iconsax.status,
+                        itemName: 'Dashboard'),
                     TMenuItem(
-                      route: TRoutes.media,
-                      icon: Iconsax.image,
-                      itemName: 'Media',
-                    ),
+                        route: TRoutes.media,
+                        icon: Iconsax.image,
+                        itemName: 'Media'),
+                    TMenuItem(
+                        route: TRoutes.categories,
+                        icon: Iconsax.category_2,
+                        itemName: 'Categories'),
                   ],
                 ),
               )
