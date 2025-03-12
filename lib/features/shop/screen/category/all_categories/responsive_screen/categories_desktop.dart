@@ -1,10 +1,10 @@
-import 'package:t_store_admin_panel/common/widgets/breadcrumbs/breadcrumb_with_headings.dart';
+import 'package:t_store_admin_panel/features/shop/screen/category/all_categories/table/data_table.dart';
 
+import '../../../../../../common/widgets/data_table/table_header.dart';
 import '../../../../../../utils/constants/path_provider.dart';
-import '../widget/table_header.dart';
 
-class CategoriesDesktopScreen extends StatelessWidget {
-  const CategoriesDesktopScreen({super.key});
+class CategoryDesktopScreen extends StatelessWidget {
+  const CategoryDesktopScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,13 @@ class CategoriesDesktopScreen extends StatelessWidget {
               SizedBox(height: TSizes.spaceBtwSections),
               TRoundedContainer(
                 child: Column(
-                  children: [CategoryTableHeader()],
+                  children: [
+                    TTableHeader(
+                        buttonText: "Create New Category",
+                        onPressed: () => Get.toNamed(TRoutes.createCategories)),
+                    SizedBox(height: TSizes.spaceBtwItems),
+                    CategoryTable()
+                  ],
                 ),
               )
             ],

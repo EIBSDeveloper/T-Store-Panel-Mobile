@@ -8,7 +8,7 @@ class CreateCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TSiteTemplate(
-      desktop: CreateCategoriesDesktopScreen(),
+      desktop: CreateCategoryDesktopScreen(),
     );
   }
 }

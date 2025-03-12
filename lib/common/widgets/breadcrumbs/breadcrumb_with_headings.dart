@@ -44,7 +44,7 @@ class TBreadcrumbWithHeadings extends StatelessWidget {
                   InkWell(
                     onTap: i == breadcrumbItems.length - 1
                         ? null
-                        : () => Get.toNamed(breadcrumbItems[i]),
+                        : () => Get.offNamed(breadcrumbItems[i]),
                     child: Padding(
                       padding: const EdgeInsets.all(TSizes.xs),
                       child: Text(

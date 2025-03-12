@@ -16,6 +16,9 @@ class TMenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuController = Get.put(SidebarController());
+    // return Link(
+    //     uri: route != 'logout' ? Uri.parse(route) : null,
+    //     builder: (_, __) {
     return InkWell(
       onTap: () => menuController.menuOnTap(route),
       onHover: (hovering) => hovering
@@ -80,5 +83,6 @@ class TMenuItem extends StatelessWidget {
         ),
       ),
     );
+    // });
   }
 }
