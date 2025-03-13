@@ -1,4 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 /// This class contains all the App Text in String formats.
+TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
 class TTexts {
   // -- Admin Default Credentials
   static const String adminEmail = "karthickd602@gmail.com";

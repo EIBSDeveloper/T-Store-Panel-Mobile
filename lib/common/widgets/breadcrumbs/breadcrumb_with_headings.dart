@@ -30,10 +30,7 @@ class TBreadcrumbWithHeadings extends StatelessWidget {
                 padding: const EdgeInsets.all(TSizes.xs),
                 child: Text(
                   'Dashboard',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .apply(fontWeightDelta: -1),
+                  style: textTheme.bodySmall!.apply(fontWeightDelta: -1),
                 ),
               ),
             ),
