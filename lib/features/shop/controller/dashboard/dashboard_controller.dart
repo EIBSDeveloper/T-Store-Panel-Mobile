@@ -1,5 +1,3 @@
-import 'package:t_store_admin_panel/utils/constants/enums.dart';
-
 import '../../../../utils/constants/path_provider.dart';
 import '../../model/order_model.dart';
 
@@ -89,13 +87,13 @@ class DashboardController extends GetxController {
         id: 'CWT0112',
         status: OrderStatus.processing,
         totalAmount: 265,
-        orderDate: DateTime(2025, 3, 3),
+        orderDate: DateTime(2025, 3, 11),
         deliveryDate: DateTime(2024, 3, 20)),
     OrderModel(
       id: 'CWT0025',
       status: OrderStatus.shipped,
       totalAmount: 369,
-      orderDate: DateTime(2025, 3, 4),
+      orderDate: DateTime(2025, 3, 12),
       deliveryDate: DateTime(2024, 3, 21),
     ), // OrderModel
     OrderModel(
@@ -113,14 +111,14 @@ class DashboardController extends GetxController {
       id: 'CWT0265',
       status: OrderStatus.delivered,
       totalAmount: 345,
-      orderDate: DateTime(2025, 3, 6),
-      deliveryDate: DateTime(2025, 2, 28),
+      orderDate: DateTime(2025, 3, 13),
+      deliveryDate: DateTime(2025, 3, 28),
     ), // OrderModel
     OrderModel(
       id: 'CWT1536',
       status: OrderStatus.delivered,
       totalAmount: 115,
-      orderDate: DateTime(2025, 3, 4),
+      orderDate: DateTime(2025, 3, 14),
       deliveryDate: DateTime(2024, 5, 24),
     ), // OrderModel
   ];
