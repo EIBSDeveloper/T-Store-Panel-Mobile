@@ -84,7 +84,6 @@ class TRoundedImage extends StatelessWidget {
   // Function to build the network image widget
   Widget _buildNetworkImage() {
     if (image != null) {
-      print("Image URL : $image");
       return Image.network(
         image!,
         fit: fit,

@@ -1,4 +1,5 @@
 import 'package:t_store_admin_panel/features/shop/screen/brand/all_brands/brand.dart';
+import 'package:t_store_admin_panel/features/shop/screen/customer/all_customer/customer.dart';
 
 import '../features/authentication/screen/forget_password/forget_password_screen.dart';
 import '../features/authentication/screen/login/login_screen.dart';
@@ -90,5 +91,8 @@ class TAppRoutes {
         name: TRoutes.editProducts,
         page: () => EditProductScreen() /*,middlewares: [TRoutesMiddleWare()]*/
         ),
+
+    /// --- Customer
+    GetPage(name: TRoutes.customer, page: () => CustomerScreen())
   ];
 }
