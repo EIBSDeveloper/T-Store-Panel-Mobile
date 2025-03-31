@@ -1,49 +1,47 @@
 import 'package:data_table_2/data_table_2.dart';
-import 'package:t_store_admin_panel/common/widgets/icons/table_action_icon_buttons.dart';
-import 'package:t_store_admin_panel/common/widgets/images/t_rounded_image.dart';
-import 'package:t_store_admin_panel/features/authentication/model/user_model.dart';
 
 import '../../../../../../utils/constants/path_provider.dart';
+import '../../../../controller/dashboard/dashboard_controller.dart';
 
-class CustomerRows extends DataTableSource {
+class CustomerOrderRows extends DataTableSource {
+  final controller = Get.put(DashboardController());
+
   @override
   DataRow? getRow(int index) {
-    return DataRow2(cells: [
-      DataCell(Row(
-        children: [
-          TRoundedImage(
-            width: 50,
-            height: 50,
-            padding: TSizes.sm,
-            imageType: ImageType.asset,
-            image: TImages.darkAppLogo,
-            borderRadius: TSizes.borderRadiusMd,
-            backgroundColor: TColors.primaryBackground,
-          ),
-          SizedBox(width: TSizes.spaceBtwItems),
-          Expanded(
-            child: Text(
-              "Karthick",
-              style: Theme.of(Get.context!)
-                  .textTheme
-                  .bodyLarge!
-                  .apply(color: TColors.primary),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          )
-        ],
-      )),
-      DataCell(Text("karthickd602@gmail.com")),
-      DataCell(Text("+91-7094930770")),
-      DataCell(Text(DateTime.now().toString())),
-      DataCell(TTableActionButtons(
-        view: true,
-        edit: false,
-        onViewPressed: () =>
-            Get.toNamed(TRoutes.customerDetails, arguments: UserModel.empty()),
-      ))
-    ]);
+    final order = controller.orders[index];
+    // TODO: implement getRow
+    return DataRow2(
+        selected: false,
+        onTap: () {
+          // Get.toNamed(TRoutes.orderDetails);
+        },
+        cells: [
+          DataCell(Text(
+            order.id,
+            style: Theme.of(Get.context!)
+                .textTheme
+                .bodyLarge!
+                .apply(color: TColors.primary),
+          )),
+          DataCell(Text(order.formattedOrderDate)),
+          DataCell(Text('5 Items')),
+          DataCell(
+            TRoundedContainer(
+              radius: TSizes.cardRadiusSm,
+              padding: const EdgeInsets.symmetric(
+                  vertical: TSizes.xs, horizontal: TSizes.md),
+              backgroundColor:
+                  THelperFunctions.getOrderStatusColor(order.status)
+                      .withOpacity(0.1),
+              child: Text(
+                order.status.name.capitalize.toString(),
+                style: TextStyle(
+                    color: THelperFunctions.getOrderStatusColor(order.status)),
+              ), // Text
+            ), // TRounded Container
+          ), // DataCell
+          DataCell(Text('₹${order.totalAmount}')),
+        ]);
   }
 
   @override
@@ -52,7 +50,7 @@ class CustomerRows extends DataTableSource {
 
   @override
   // TODO: implement rowCount
-  int get rowCount => 20;
+  int get rowCount => controller.orders.length;
 
   @override
   // TODO: implement selectedRowCount

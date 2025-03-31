@@ -27,17 +27,19 @@ class CustomerDetailDesktopScreen extends StatelessWidget {
 
               /// -- Body
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// --- Left side customer info
                   Expanded(
                       child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomerInfo(),
                       SizedBox(height: TSizes.spaceBtwSections),
                       ShippingAddress()
                     ],
                   )),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  SizedBox(width: TSizes.spaceBtwSections),
                   Expanded(flex: 2, child: CustomerOrders())
                 ],
               )

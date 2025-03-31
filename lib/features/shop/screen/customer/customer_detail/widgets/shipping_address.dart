@@ -5,6 +5,15 @@ class ShippingAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TRoundedContainer();
+    return TRoundedContainer(
+      padding: EdgeInsets.all(TSizes.defaultSpace),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Shipping Address", style: textTheme.headlineMedium),
+          SizedBox(height: TSizes.spaceBtwSections),
+        ],
+      ),
+    );
   }
 }
