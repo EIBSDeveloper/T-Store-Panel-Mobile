@@ -13,6 +13,7 @@ import '../features/shop/screen/brand/edit_brand/edit_brand.dart';
 import '../features/shop/screen/category/all_categories/categories.dart';
 import '../features/shop/screen/category/create_category/create_categories.dart';
 import '../features/shop/screen/category/edit_category/edit_categories.dart';
+import '../features/shop/screen/customer/customer_detail/customer_detail_screen.dart';
 import '../features/shop/screen/dashboard/dashboard.dart';
 import '../features/shop/screen/product/all_products/product.dart';
 import '../features/shop/screen/product/create_products/create_product.dart';
@@ -93,6 +94,7 @@ class TAppRoutes {
         ),
 
     /// --- Customer
-    GetPage(name: TRoutes.customer, page: () => CustomerScreen())
+    GetPage(name: TRoutes.customer, page: () => CustomerScreen()),
+    GetPage(name: TRoutes.customerDetails, page: () => CustomerDetailScreen())
   ];
 }
